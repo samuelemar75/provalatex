@@ -1,0 +1,635 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{hyperref}
+
+% Impostazioni per la visualizzazione del codice
+\lstset{
+  basicstyle=\footnotesize\ttfamily,
+  breaklines=true,
+}
+
+\title{Percorso Didattico PHP:\\ Dalle Basi all'Interazione con Database}
+\author{}
+\date{}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% Slide 1: Obiettivi
+\begin{frame}
+\frametitle{Obiettivi}
+\begin{itemize}
+    \item Introdurre PHP e l'ambiente di sviluppo
+    \item Approfondire la programmazione con PHP (variabili, strutture di controllo, funzioni, array)
+    \item Gestire form e interagire con database SQL
+    \item Affrontare esempi pratici e progetti finali
+\end{itemize}
+\end{frame}
+
+% Slide 2: Agenda
+\begin{frame}
+\frametitle{Agenda della Presentazione}
+\begin{enumerate}
+    \item Modulo 1: Introduzione a PHP e Ambiente di Sviluppo
+    \item Modulo 2: Tipi di Dati, Operatori e Strutture di Controllo
+    \item Modulo 3: Funzioni e Array
+    \item Modulo 4: Gestione dei Form e Interazione Base
+    \item Modulo 5: Interazione con Database SQL (MySQL)
+    \item Modulo 6: Progetto Finale Integrato
+    \item Modulo 7: Approfondimenti e Sicurezza
+\end{enumerate}
+\end{frame}
+
+% ====================
+% Modulo 1
+% ====================
+
+\begin{frame}
+\frametitle{Modulo 1: Introduzione a PHP e Ambiente di Sviluppo}
+\textbf{Concetti Base e Ambiente:}
+\begin{itemize}
+    \item Introduzione a PHP (linguaggio lato server)
+    \item Installazione e configurazione di XAMPP/WAMP/MAMP
+    \item Struttura minima di un file PHP: \texttt{\textless ?php ... ?\textgreater}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modulo 1: Esempi Base}
+\textbf{Hello World:}
+\begin{lstlisting}
+<?php
+  echo "Hello, World!";
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Variabili e Concatenazione:}
+\begin{lstlisting}
+<?php
+  $nome = "Mario";
+  $eta = 16;
+  echo "Il mio nome è " . $nome . " e ho " . $eta . " anni.";
+?>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modulo 1: Esempi Aggiuntivi}
+\textbf{Commenti in PHP:}
+\begin{lstlisting}
+<?php
+  // Questo è un commento su una riga
+  /* Questo è un commento
+     su più righe */
+  echo "Commenti in PHP!";
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Inclusione di File Esterni:}
+\begin{lstlisting}
+// File: header.php
+<?php
+  echo "<h1>Benvenuti al corso PHP</h1>";
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Visualizzazione della Data e Ora:}
+\begin{lstlisting}
+<?php
+  echo "Oggi è " . date("d/m/Y") . " e l'ora attuale è " . date("H:i:s");
+?>
+\end{lstlisting}
+\end{frame}
+
+% ====================
+% Modulo 2
+% ====================
+
+\begin{frame}
+\frametitle{Modulo 2: Tipi di Dati, Operatori e Strutture di Controllo}
+\begin{itemize}
+    \item Tipi di dati: stringhe, numeri, booleani
+    \item Strutture condizionali: \texttt{if}, \texttt{else}, \texttt{switch}
+    \item Cicli: \texttt{for}, \texttt{while}, \texttt{foreach}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modulo 2: Esempi Base}
+\textbf{Verifica Pari/Dispari:}
+\begin{lstlisting}
+<?php
+  $numero = 7;
+  if ($numero % 2 == 0) {
+      echo "$numero è pari.";
+  } else {
+      echo "$numero è dispari.";
+  }
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Ciclo For (1-10):}
+\begin{lstlisting}
+<?php
+  for ($i = 1; $i <= 10; $i++) {
+      echo $i . " ";
+  }
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Calcolo del Fattoriale:}
+\begin{lstlisting}
+<?php
+  $numero = 5;
+  $fattoriale = 1;
+  for ($i = 1; $i <= $numero; $i++) {
+      $fattoriale *= $i;
+  }
+  echo "Il fattoriale di $numero è $fattoriale.";
+?>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modulo 2: Esempi Aggiuntivi}
+\textbf{Calcolo della Media di un Array:}
+\begin{lstlisting}
+<?php
+  $numeri = [10, 20, 30, 40, 50];
+  $somma = array_sum($numeri);
+  $media = $somma / count($numeri);
+  echo "La media è: " . $media;
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Utilizzo del Costrutto switch:}
+\begin{lstlisting}
+<?php
+  $giorno = 3;
+  switch ($giorno) {
+      case 1:
+          echo "Lunedì";
+          break;
+      case 2:
+          echo "Martedì";
+          break;
+      case 3:
+          echo "Mercoledì";
+          break;
+      default:
+          echo "Altro giorno";
+  }
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Verifica se un Numero è Primo:}
+\begin{lstlisting}
+<?php
+  $num = 29;
+  $isPrimo = true;
+  if ($num < 2) {
+      $isPrimo = false;
+  } else {
+      for ($i = 2; $i <= sqrt($num); $i++) {
+          if ($num % $i == 0) {
+              $isPrimo = false;
+              break;
+          }
+      }
+  }
+  echo $num . ($isPrimo ? " è primo." : " non è primo.");
+?>
+\end{lstlisting}
+\end{frame}
+
+% ====================
+% Modulo 3
+% ====================
+
+\begin{frame}
+\frametitle{Modulo 3: Funzioni e Array}
+\begin{itemize}
+    \item Definizione e utilizzo di funzioni in PHP
+    \item Array indicizzati, associativi e multidimensionali
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modulo 3: Esempi Base}
+\textbf{Funzione per Sommare Elementi di un Array:}
+\begin{lstlisting}
+<?php
+  function sommaArray($arr) {
+      $somma = 0;
+      foreach ($arr as $valore) {
+          $somma += $valore;
+      }
+      return $somma;
+  }
+  $numeri = [1, 2, 3, 4, 5];
+  echo "La somma è: " . sommaArray($numeri);
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Array Associativo di Studenti:}
+\begin{lstlisting}
+<?php
+  $studenti = [
+      "Mario" => 16,
+      "Lucia" => 17,
+      "Giovanni" => 16
+  ];
+  foreach ($studenti as $nome => $eta) {
+      echo "Studente: $nome, Età: $eta<br>";
+  }
+?>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modulo 3: Esempi Aggiuntivi}
+\textbf{Funzione per Trovare il Massimo in un Array:}
+\begin{lstlisting}
+<?php
+  function massimoArray($arr) {
+      $max = $arr[0];
+      foreach ($arr as $valore) {
+          if ($valore > $max) {
+              $max = $valore;
+          }
+      }
+      return $max;
+  }
+  $numeri = [3, 5, 7, 2, 9];
+  echo "Il massimo è: " . massimoArray($numeri);
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Array Multidimensionale (Studenti con Voti):}
+\begin{lstlisting}
+<?php
+  $studenti = [
+      ["nome" => "Mario", "voto" => 8],
+      ["nome" => "Lucia", "voto" => 9],
+      ["nome" => "Giovanni", "voto" => 7]
+  ];
+  foreach ($studenti as $studente) {
+      echo "Studente: " . $studente['nome'] . " - Voto: " . $studente['voto'] . "<br>";
+  }
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Ricerca di un Valore in un Array:}
+\begin{lstlisting}
+<?php
+  function trovaIndice($arr, $valoreRicercato) {
+      foreach ($arr as $indice => $valore) {
+          if ($valore == $valoreRicercato) {
+              return $indice;
+          }
+      }
+      return -1;
+  }
+  $numeri = [10, 20, 30, 40];
+  echo "L'indice di 30 è: " . trovaIndice($numeri, 30);
+?>
+\end{lstlisting}
+\end{frame}
+
+% ====================
+% Modulo 4
+% ====================
+
+\begin{frame}
+\frametitle{Modulo 4: Gestione dei Form e Interazione Base}
+\begin{itemize}
+    \item Creazione di form HTML
+    \item Differenza tra metodi GET e POST
+    \item Validazione e sanitizzazione dei dati
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modulo 4: Esempi Base}
+\textbf{Form di Contatto Semplice:}
+\begin{itemize}
+    \item \textbf{index.html}
+    \begin{lstlisting}[language=HTML]
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Form di Contatto</title>
+</head>
+<body>
+    <form action="processa.php" method="post">
+        Nome: <input type="text" name="nome"><br>
+        Email: <input type="email" name="email"><br>
+        <input type="submit" value="Invia">
+    </form>
+</body>
+</html>
+    \end{lstlisting}
+    \item \textbf{processa.php}
+    \begin{lstlisting}
+<?php
+  $nome = isset($_POST['nome']) ? trim($_POST['nome']) : '';
+  $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+  if (empty($nome) || empty($email)) {
+      echo "Tutti i campi sono obbligatori.";
+      exit;
+  }
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      echo "L'email inserita non è valida.";
+      exit;
+  }
+  echo "Nome: $nome<br>Email: $email";
+?>
+    \end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modulo 4: Esempi Aggiuntivi}
+\textbf{Form di Login Semplice:}
+\begin{itemize}
+    \item \textbf{login.html}
+    \begin{lstlisting}[language=HTML]
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+</head>
+<body>
+    <form action="verifica_login.php" method="post">
+        Username: <input type="text" name="username"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" value="Accedi">
+    </form>
+</body>
+</html>
+    \end{lstlisting}
+    \item \textbf{verifica_login.php}
+    \begin{lstlisting}
+<?php
+  $username = isset($_POST['username']) ? htmlspecialchars(trim($_POST['username'])) : '';
+  $password = isset($_POST['password']) ? htmlspecialchars(trim($_POST['password'])) : '';
+  if ($username === "admin" && $password === "1234") {
+      echo "Accesso effettuato!";
+  } else {
+      echo "Credenziali errate.";
+  }
+?>
+    \end{lstlisting}
+\end{itemize}
+\vspace{0.5em}
+\textbf{Form di Ricerca con Metodo GET:}
+\begin{itemize}
+    \item \textbf{ricerca.html}
+    \begin{lstlisting}[language=HTML]
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ricerca</title>
+</head>
+<body>
+    <form action="risultati.php" method="get">
+        Cerca: <input type="text" name="query"><br>
+        <input type="submit" value="Cerca">
+    </form>
+</body>
+</html>
+    \end{lstlisting}
+    \item \textbf{risultati.php}
+    \begin{lstlisting}
+<?php
+  $query = isset($_GET['query']) ? htmlspecialchars(trim($_GET['query'])) : '';
+  echo "Risultati per la ricerca: " . $query;
+?>
+    \end{lstlisting}
+\end{itemize}
+\vspace{0.5em}
+\textbf{Form per l'Invio di Commenti:}
+\begin{lstlisting}[language=HTML]
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Invia Commento</title>
+</head>
+<body>
+    <form action="salva_commento.php" method="post">
+        Nome: <input type="text" name="nome"><br>
+        Commento: <textarea name="commento"></textarea><br>
+        <input type="submit" value="Invia Commento">
+    </form>
+</body>
+</html>
+\end{lstlisting}
+\end{frame}
+
+% ====================
+% Modulo 5
+% ====================
+
+\begin{frame}
+\frametitle{Modulo 5: Interazione con Database SQL (MySQL)}
+\begin{itemize}
+    \item Creazione e gestione di database relazionali (es. MySQL)
+    \item Utilizzo di PDO per connessione sicura
+    \item Prevenzione della SQL injection con query preparate
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modulo 5: Esempio Base di Connessione e Visualizzazione}
+\begin{lstlisting}
+<?php
+  $host = 'localhost';
+  $dbname = 'scuola';
+  $user = 'root';
+  $password = '';
+  try {
+      $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $stmt = $pdo->query("SELECT * FROM utenti");
+      $utenti = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      foreach ($utenti as $utente) {
+          echo "ID: " . $utente['id'] . " - Nome: " . $utente['nome'] . " - Email: " . $utente['email'] . "<br>";
+      }
+  } catch (PDOException $e) {
+      echo "Connessione fallita: " . $e->getMessage();
+  }
+?>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modulo 5: Esempi Aggiuntivi di Operazioni CRUD}
+\textbf{Inserimento in una Tabella 'prodotti':}
+\begin{lstlisting}
+<?php
+  try {
+      $pdo = new PDO("mysql:host=localhost;dbname=negozio;charset=utf8", 'root', '');
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $stmt = $pdo->prepare("INSERT INTO prodotti (nome, prezzo) VALUES (:nome, :prezzo)");
+      $stmt->execute([
+          ':nome' => 'Prodotto A',
+          ':prezzo' => 19.99
+      ]);
+      echo "Prodotto inserito!";
+  } catch (PDOException $e) {
+      echo "Errore: " . $e->getMessage();
+  }
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Aggiornamento di un Record:}
+\begin{lstlisting}
+<?php
+  try {
+      $pdo = new PDO("mysql:host=localhost;dbname=negozio;charset=utf8", 'root', '');
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $stmt = $pdo->prepare("UPDATE prodotti SET prezzo = :prezzo WHERE id = :id");
+      $stmt->execute([
+          ':prezzo' => 24.99,
+          ':id' => 1
+      ]);
+      echo "Prodotto aggiornato!";
+  } catch (PDOException $e) {
+      echo "Errore: " . $e->getMessage();
+  }
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Eliminazione di un Record:}
+\begin{lstlisting}
+<?php
+  try {
+      $pdo = new PDO("mysql:host=localhost;dbname=negozio;charset=utf8", 'root', '');
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $stmt = $pdo->prepare("DELETE FROM prodotti WHERE id = :id");
+      $stmt->execute([':id' => 1]);
+      echo "Prodotto eliminato!";
+  } catch (PDOException $e) {
+      echo "Errore: " . $e->getMessage();
+  }
+?>
+\end{lstlisting}
+\end{frame}
+
+% ====================
+% Modulo 6
+% ====================
+
+\begin{frame}
+\frametitle{Modulo 6: Progetto Finale Integrato}
+\textbf{Proposta di Progetto: Rubrica/Contatti}
+\begin{itemize}
+    \item Inserimento, visualizzazione, modifica ed eliminazione di contatti
+    \item Possibilità di ricerca per nome o altri campi
+    \item Attività: Progettazione del database, interfaccia HTML/CSS, logica CRUD con PHP e MySQL
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Modulo 6: Altre Idee di Progetto}
+\begin{enumerate}
+    \item \textbf{Blog Semplice:} Gestione di post e commenti, operazioni CRUD.
+    \item \textbf{To-Do List:} Creazione e gestione di attività, marcatura come completate, eliminazione.
+    \item \textbf{Gestione Eventi:} Inserimento ed aggiornamento di eventi, registrazione partecipanti, filtri e ricerche.
+\end{enumerate}
+\end{frame}
+
+% ====================
+% Modulo 7
+% ====================
+
+\begin{frame}
+\frametitle{Modulo 7: Approfondimenti e Sicurezza}
+\begin{itemize}
+    \item Gestione degli errori con \texttt{try-catch} e configurazione di \texttt{error\_reporting}
+    \item Sanitizzazione e validazione avanzata degli input
+    \item Prevenzione di vulnerabilità: SQL injection, XSS, CSRF
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modulo 7: Esempi Base di Sicurezza}
+\textbf{Gestione degli Errori:} (già mostrato negli esempi di connessione al DB)
+\vspace{1em}
+
+\textbf{Sanitizzazione con \texttt{htmlspecialchars()}:} (integrato negli esempi di form)
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Modulo 7: Esempi Aggiuntivi di Sicurezza}
+\textbf{Utilizzo delle Sessioni per il Login:}
+\begin{lstlisting}
+<?php
+  session_start();
+  $_SESSION['utente'] = $username;
+  echo "Login effettuato, benvenuto " . $_SESSION['utente'];
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Hashing delle Password:}
+\begin{lstlisting}
+<?php
+  // Al momento dell'inserimento:
+  $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+  // Salva $passwordHash nel database
+
+  // Durante il login:
+  if (password_verify($passwordInserita, $passwordHashDalDB)) {
+      echo "Password corretta!";
+  } else {
+      echo "Password errata!";
+  }
+?>
+\end{lstlisting}
+\vspace{0.5em}
+\textbf{Token CSRF in un Form:}
+\begin{lstlisting}
+<?php
+  session_start();
+  if (empty($_SESSION['token'])) {
+      $_SESSION['token'] = bin2hex(random_bytes(32));
+  }
+?>
+<!-- Nel form HTML -->
+<input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
+<?php
+  if (hash_equals($_SESSION['token'], $_POST['token'])) {
+      // Procedi con l'elaborazione
+  } else {
+      echo "Token non valido!";
+  }
+?>
+\end{lstlisting}
+\end{frame}
+
+% ====================
+% Conclusioni
+% ====================
+
+\begin{frame}
+\frametitle{Conclusioni e Risorse Utili}
+\begin{itemize}
+    \item Riepilogo: Dalle basi di PHP all'interazione con database e sicurezza.
+    \item Risorse:
+    \begin{itemize}
+        \item \href{https://www.php.net/manual/it/}{Documentazione ufficiale PHP}
+        \item Forum e community online (StackOverflow, GitHub, ecc.)
+    \end{itemize}
+    \item Invito alla pratica e al lavoro di gruppo.
+\end{itemize}
+\end{frame}
+
+\end{document}
